@@ -25,17 +25,22 @@ button.addEventListener('click',
       // AL CLICK AGGIUNGO CLASSE PER CAMBIARE COLORE ALLA CELLA
       nuovoElemento.addEventListener('click',
         function () {
+          
           // SE IL NUMERO E' UNA BOMBA, DIVENTA ROSSO
           if(arrRandom.includes(i)){
+            // aggiungi classe bomb (colore rosso)
             nuovoElemento.classList.add('bomb');
+            // prendi i click sulle celle azzurre
+            let punti = document.getElementsByClassName('square-click').length;
+            // quando perdi, visualizza i click totali alle celle azzurre come punti
+            console.log('Hai perso! Il tuo punteggio è', `${punti}`); 
           }
           // SE NO SI COLORA DI AZZURRO
           else{
             nuovoElemento.classList.add('square-click');
+            // IN CONSOLE VISUALIZZO NUMERO CLICCATO
+            // console.log('Hai cliccato la cella:', i);
           }
-
-          // IN CONSOLE VISUALIZZO NUMERO CLICCATO
-          console.log('Hai cliccato la cella:', i);
         }
       )
 
