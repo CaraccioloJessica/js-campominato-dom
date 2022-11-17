@@ -2,6 +2,9 @@
 
 // VARIABILE CONTAINER
 const contenitore = document.getElementById('container');
+// RICHIAMO FUNZIONE PER NUMERI RANDOM
+const arrRandom = generaBombe();
+console.log(arrRandom);
 
 // BOTTONE PER GENERARE GRIGLIA
 const button = document.getElementById('btn');
@@ -54,9 +57,9 @@ function generaBombe(){
     let numRandom = [];
     while(numRandom.length < 16){
       let random = rangeNum(1, 100);
-      if(numRandom.indexOf(random) == -1){
+      if(!numRandom.includes(random)){
         numRandom.push(random);
       }
     }
     return numRandom;
-} console.log(generaBombe());
+}
