@@ -2,6 +2,8 @@
 
 // VARIABILE CONTAINER
 const contenitore = document.getElementById('container');
+const text = document.getElementById('text');
+
 // RICHIAMO FUNZIONE PER NUMERI RANDOM
 const arrRandom = generaBombe();
 // console.log(arrRandom);
@@ -12,6 +14,7 @@ button.addEventListener('click',
   function () {
     // RESET DELLA GRIGLIA AL CLICK
     contenitore.innerHTML = '';
+    text.innerHTML = '';
     // RESET CONSOLE QUANDO SI GENERA NUOVA GRIGLIA
     console.clear();
 
@@ -33,7 +36,8 @@ button.addEventListener('click',
             // prendi i click sulle celle azzurre
             let punti = document.getElementsByClassName('square-click').length;
             // quando perdi, visualizza i click totali alle celle azzurre come punti
-            console.log('Hai perso! Il tuo punteggio è', `${punti}`); 
+            text.innerHTML = `Hai perso! Il tuo punteggio è di ${punti}`
+            // console.log('Hai perso! Il tuo punteggio è', `${punti}`); 
           }
           // SE NO SI COLORA DI AZZURRO
           else{
