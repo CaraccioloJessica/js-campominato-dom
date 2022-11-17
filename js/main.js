@@ -34,16 +34,23 @@ button.addEventListener('click',
             // aggiungi classe bomb (colore rosso)
             nuovoElemento.classList.add('bomb');
             // prendi i click sulle celle azzurre
-            let punti = document.getElementsByClassName('square-click').length;
+            var punti = document.getElementsByClassName('square-click').length;
             // quando perdi, visualizza i click totali alle celle azzurre come punti
             text.innerHTML = `Hai perso! Il tuo punteggio è di ${punti}`
-            // console.log('Hai perso! Il tuo punteggio è', `${punti}`); 
+            // console.log('Hai perso! Il tuo punteggio è', `${punti}`);
           }
+
+
           // SE NO SI COLORA DI AZZURRO
           else{
             nuovoElemento.classList.add('square-click');
             // IN CONSOLE VISUALIZZO NUMERO CLICCATO
             // console.log('Hai cliccato la cella:', i);
+
+            // se non prendi le bombe, hai vinto
+            if(punti == 84){
+              text.innerHTML = text.innerHTML = `Complimenti, Il tuo punteggio è di ${punti}`
+            }
           }
         }
       )
