@@ -4,7 +4,7 @@
 const contenitore = document.getElementById('container');
 // RICHIAMO FUNZIONE PER NUMERI RANDOM
 const arrRandom = generaBombe();
-console.log(arrRandom);
+// console.log(arrRandom);
 
 // BOTTONE PER GENERARE GRIGLIA
 const button = document.getElementById('btn');
@@ -25,7 +25,14 @@ button.addEventListener('click',
       // AL CLICK AGGIUNGO CLASSE PER CAMBIARE COLORE ALLA CELLA
       nuovoElemento.addEventListener('click',
         function () {
-          nuovoElemento.classList.add('square-click');
+          // SE IL NUMERO E' UNA BOMBA, DIVENTA ROSSO
+          if(arrRandom.includes(i)){
+            nuovoElemento.classList.add('bomb');
+          }
+          // SE NO SI COLORA DI AZZURRO
+          else{
+            nuovoElemento.classList.add('square-click');
+          }
 
           // IN CONSOLE VISUALIZZO NUMERO CLICCATO
           console.log('Hai cliccato la cella:', i);
