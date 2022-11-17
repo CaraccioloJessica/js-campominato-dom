@@ -3,20 +3,23 @@
 // VARIABILE CONTAINER
 const contenitore = document.getElementById('container');
 const text = document.getElementById('text');
+let punteggio;
 
 // RICHIAMO FUNZIONE PER NUMERI RANDOM
 const arrRandom = generaBombe();
-// console.log(arrRandom);
+//console.log(arrRandom);
 
 // BOTTONE PER GENERARE GRIGLIA
 const button = document.getElementById('btn');
 button.addEventListener('click',
   function () {
+    punteggio = 0;
     // RESET DELLA GRIGLIA AL CLICK
     contenitore.innerHTML = '';
     text.innerHTML = '';
     // RESET CONSOLE QUANDO SI GENERA NUOVA GRIGLIA
     console.clear();
+    console.log(arrRandom);
 
     // LOOP PER CREARE 100 CELLE
     for (let i = 1; i <= 100; i++){
@@ -27,14 +30,14 @@ button.addEventListener('click',
 
       // AL CLICK AGGIUNGO CLASSE PER CAMBIARE COLORE ALLA CELLA
       nuovoElemento.addEventListener('click',
-        function () {
-          
+        function () {     
+               
           // SE IL NUMERO E' UNA BOMBA, DIVENTA ROSSO
           if(arrRandom.includes(i)){
             // aggiungi classe bomb (colore rosso)
             nuovoElemento.classList.add('bomb');
             // prendi i click sulle celle azzurre
-            var punti = document.getElementsByClassName('square-click').length;
+            let punti = document.getElementsByClassName('square-click').length;
             // quando perdi, visualizza i click totali alle celle azzurre come punti
             text.innerHTML = `Hai perso! Il tuo punteggio è di ${punti}`
             // console.log('Hai perso! Il tuo punteggio è', `${punti}`);
@@ -47,9 +50,11 @@ button.addEventListener('click',
             // IN CONSOLE VISUALIZZO NUMERO CLICCATO
             // console.log('Hai cliccato la cella:', i);
 
-            // se non prendi le bombe, hai vinto
-            if(punti == 84){
-              text.innerHTML = text.innerHTML = `Complimenti, Il tuo punteggio è di ${punti}`
+            // se prendi tutte le celle azzurre, hai vinto
+            punteggio ++;
+            if(punteggio == 84){
+              text.style.color = "#8ECC39";
+              text.innerHTML = `Complimenti, Il tuo punteggio è di ${punteggio}`
             }
           }
         }
